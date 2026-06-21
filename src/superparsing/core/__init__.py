@@ -160,7 +160,7 @@ class SuperParser:
         return "\n\n".join(filtered)
 
     def parse_args(
-        self: Self, args: Optional[Iterable[str]] = None, /
+        self: Self, args: Optional[Iterable[object]] = None, /
     ) -> list[str]:
         args_: list[str]
         cmd: SubCommand

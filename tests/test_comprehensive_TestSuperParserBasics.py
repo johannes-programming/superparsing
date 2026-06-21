@@ -45,7 +45,6 @@ class TestSuperParserBasics(unittest.TestCase):
         self.assertIs(p.subCommands[-1], c)
         self.assertEqual(c.name, "run")
 
-
     def test_subcommands_message_none_when_empty(self: Self) -> None:
         self.assertIsNone(SuperParser()._subCommands_message())
 

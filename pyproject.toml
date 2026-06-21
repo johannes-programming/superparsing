@@ -27,7 +27,7 @@ license-files = [
 name = "superparsing"
 readme = "README.rst"
 requires-python = ">=3.11"
-version = "0.0.0.dev2"
+version = "0.1.0"
 
 [project.urls]
 Download = "https://pypi.org/project/superparsing/#files"
