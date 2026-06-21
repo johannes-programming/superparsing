@@ -1,6 +1,6 @@
 import unittest
-from typing import Any, Self
-from unittest.mock import patch
+from typing import Self
+from unittest.mock import MagicMock, patch
 
 from superparsing import SuperFlag, SuperParser
 
@@ -19,7 +19,7 @@ class TestSuperParser(unittest.TestCase):
         self.parser.add_subCommand(name="test", help="test command")
 
     @patch("importlib.metadata.version")
-    def test_version_default(self: Self, mock_version: Any) -> None:
+    def test_version_default(self: Self, mock_version: MagicMock) -> None:
         mock_version.return_value = "2.0.0"
         parser = SuperParser(prog="tool")
         self.assertEqual(parser.version(), "tool, version 2.0.0")

@@ -4,13 +4,18 @@ import os
 import sys
 import tempfile
 import unittest
-from typing import Any, Self
+from collections.abc import Callable
+from typing import Self
 from unittest import mock
 
 from superparsing import SuperParseError, SuperParser
 
 
-def capture_stdout(func: Any, *args: Any, **kwargs: Any) -> Any:
+def capture_stdout(
+    func: Callable[..., object],
+    *args: object,
+    **kwargs: object,
+) -> tuple[object, str]:
     """Run ``func`` and return (return_value, captured_stdout_str)."""
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf):
