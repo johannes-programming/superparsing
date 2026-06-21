@@ -23,7 +23,7 @@ def capture_stdout(
 # SuperParser: usage / help / version text
 # ---------------------------------------------------------------------------
 class TestSuperParserText(unittest.TestCase):
-    def make(self: Self) -> None:
+    def make(self: Self) -> SuperParser:
         p = SuperParser(prog="tool")
         p.helpFlag.keys = ["-h", "--help"]
         p.versionFlag.keys = ["-v", "--version"]
