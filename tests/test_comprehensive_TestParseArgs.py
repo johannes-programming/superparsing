@@ -27,7 +27,7 @@ def capture_stdout(
 # SuperParser: parse_args
 # ---------------------------------------------------------------------------
 class TestParseArgs(unittest.TestCase):
-    def make(self: Self) -> None:
+    def make(self: Self) -> SuperParser:
         p = SuperParser(prog="tool")
         p.helpFlag.keys = ["-h", "--help"]
         p.versionFlag.keys = ["-v", "--version"]
