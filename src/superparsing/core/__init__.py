@@ -156,9 +156,8 @@ class SuperParser:
         ans.append(self._keys_message())
         ans.append(self._subCommands_message())
         ans.append("args:\n" + " " * INDENT + ARGS_MESSAGE)
-        while None in ans:
-            ans.remove(None)
-        return "\n\n".join(ans)
+        filtered = [part for part in ans if part is not None]
+        return "\n\n".join(filtered)
 
     def parse_args(
         self: Self, args: Optional[Iterable[str]] = None, /
