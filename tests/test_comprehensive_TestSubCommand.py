@@ -1,29 +1,12 @@
-"""Comprehensive unit tests for the ``superparse`` module.
-
-Run with:
-    python -m unittest -v test_superparse
-or, if you have pytest:
-    pytest -v test_superparse.py
-
-The suite is organised by class. A final ``TestKnownDefects`` class documents
-three confirmed defects using ``unittest.expectedFailure`` so the suite stays
-green today but will flag (as "unexpected success") the moment a defect is
-fixed -- a built-in reminder to update the tests.
-"""
-
 import contextlib
 import io
-import os
-import sys
-import tempfile
 import unittest
 from typing import Any, Self
-from unittest import mock
 
-from superparsing import SubCommand, SuperFlag, SuperParseError, SuperParser
+from superparsing import SubCommand
 
 
-def capture_stdout(func, *args, **kwargs):
+def capture_stdout(func: Any, *args: Any, **kwargs: Any) -> Any:
     """Run ``func`` and return (return_value, captured_stdout_str)."""
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf):
