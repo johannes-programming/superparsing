@@ -170,7 +170,8 @@ class SuperParser:
         shortopts: str
         args_ = list()
         for arg in map(str, sys.argv[1:] if args is None else args):
-            if arg == "" or arg[0] not in self.fromfile_prefix_chars:
+            prefix_chars = str(self.fromfile_prefix_chars)
+            if arg == "" or arg[0] not in prefix_chars:
                 args_.append(arg)
                 continue
             with open(arg[1:], "r") as stream:
