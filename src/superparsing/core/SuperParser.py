@@ -21,6 +21,7 @@ ARGS_MESSAGE: Final[str] = (
 
 @dataclass
 class SuperParser:
+    description: object = field(default=None, kw_only=True)
     fromfile_prefix_chars: object = field(default="", kw_only=True)
     helpFlag: SuperFlag = field(
         default_factory=partial(SuperFlag, help="print this message and exit"),
@@ -32,6 +33,12 @@ class SuperParser:
         default_factory=partial(SuperFlag, help="print version and exit"),
         kw_only=True,
     )
+
+    def _description(self: Self) -> Optional[str]:
+        if self.description is None:
+            return None
+        else:
+            return str(self.description)
 
     def _keys_message(self: Self) -> Optional[str]:
         ans: str
@@ -87,6 +94,7 @@ class SuperParser:
         if intro is not None:
             return intro
         ans = list()
+        ans.append(self._description())
         ans.append(self.usage())
         ans.append(self._keys_message())
         ans.append(self._subCommands_message())
