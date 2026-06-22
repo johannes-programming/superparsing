@@ -120,12 +120,9 @@ class SuperParser:
                 args_.extend(stream.read().splitlines())
         shortopts = self.helpFlag.shortopts() + self.versionFlag.shortopts()
         longopts = self.helpFlag.longopts() + self.versionFlag.longopts()
-        try:
-            optitems, args_ = getopt.getopt(
-                args=args_, shortopts=shortopts, longopts=longopts
-            )
-        except Exception:
-            raise SuperParseError("Failed getopt!")
+        optitems, args_ = getopt.getopt(
+            args=args_, shortopts=shortopts, longopts=longopts
+        )
         if set(self.helpFlag._keys()).intersection(dict(optitems).keys()):
             _print(self.help())
             return list()
