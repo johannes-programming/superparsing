@@ -35,7 +35,9 @@ class SuperParser:
 
     def _keys_message(self: Self) -> Optional[str]:
         ans: str
+        help_intro: str
         shift: int
+        version_intro: str
         help_intro = self.helpFlag.intro()
         version_intro = self.versionFlag.intro()
         if help_intro + version_intro == "":
@@ -69,7 +71,10 @@ class SuperParser:
         shift = max(SHIFT, *map(len, intros))
         shift += INDENT
         for intro, cmd in zip(intros, self.subCommands):
-            ans += "\n" + " " * INDENT + intro.ljust(shift) + str(cmd.help)
+            ans += "\n"
+            ans += " " * INDENT
+            ans += intro.ljust(shift)
+            ans += str(cmd.help)
         return ans
 
     def add_subCommand(self: Self, **kwargs: Any) -> SubCommand:
